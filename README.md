@@ -5,7 +5,7 @@ Group Name: Ahmad.
 Section: 6. 
 
 Team Mates:
-1. __Sofwan bin Aliza__ and __2224483__
+1. __Sofwan bin Aliza__ , __2224483__
 2. __Fill name__ and __matric no__
 3. __Fill name__ and __matric no__
 

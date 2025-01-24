@@ -76,7 +76,11 @@ codespace
 
 Look at the TERMINAL tab. Run the following commands and provide the output here. 
 
-1. Run the command **pwd** . ***(1 mark)*** __Fill answer here__.
+1. Run the command **pwd** . ***(1 mark)***
+```bash
+@salmanfrds ➜ / $ pwd
+/
+```
 2. Run the command **cat /etc/passwd** . ***(1 mark)*** 
 ```bash
 @salmanfrds ➜ / $ cat /etc/passwd
@@ -106,14 +110,151 @@ messagebus:x:104:105::/nonexistent:/usr/sbin/nologin
 codespace:x:1000:1000::/home/codespace:/bin/bash
 sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
 ```
-3. Run the command **df** . ***(1 mark)*** __Fill answer here__.
-4. Run the command **du** . ***(1 mark)*** __Fill answer here__.
+3. Run the command **df** . ***(1 mark)*** 
+```bash
+@salmanfrds ➜ / $ df
+Filesystem     1K-blocks     Used Available Use% Mounted on
+overlay         32847680 10706336  20447244  35% /
+tmpfs              65536        0     65536   0% /dev
+shm                65536        0     65536   0% /dev/shm
+/dev/root       30298176 25448404   4833388  85% /vscode
+/dev/sdc1       46127956 18735720  25016660  43% /tmp
+/dev/loop4      32847680 10706336  20447244  35% /workspaces
+```
+4. Run the command **du** . ***(1 mark)***
+```bash
+```
 5. Run the command **ls** . ***(1 mark)*** __Fill answer here__.
+```bash
+@salmanfrds ➜ / $ ls
+bin   dev  go    lib    lib64   media  opt   root  sbin  sys  usr  vscode
+boot  etc  home  lib32  libx32  mnt    proc  run   srv   tmp  var  workspaces
+```
 6. Run the command **ls -asl** . ***(1 mark)*** __Fill answer here__.
+```bash
+@salmanfrds ➜ / $ ls -asl
+total 92
+4 drwxr-xr-x    1 root      root   4096 Jan 20 13:05 .
+4 drwxr-xr-x    1 root      root   4096 Jan 20 13:05 ..
+4 drwxr-xr-x    3 root      root   4096 Jan 20 13:05 .codespaces
+0 -rwxr-xr-x    1 root      root      0 Jan 20 13:05 .dockerenv
+0 lrwxrwxrwx    1 root      root      7 Oct 11 02:03 bin -> usr/bin
+4 drwxr-xr-x    2 root      root   4096 Apr 15  2020 boot
+0 drwxr-xr-x   13 root      root   3900 Jan 24 18:16 dev
+8 drwxr-xr-x    1 root      root   4096 Jan 20 13:06 etc
+4 drwxrwsr-x    3 codespace golang 4096 Dec 12 22:27 go
+8 drwxr-xr-x    1 root      root   4096 Jan 20 13:05 home
+0 lrwxrwxrwx    1 root      root      7 Oct 11 02:03 lib -> usr/lib
+0 lrwxrwxrwx    1 root      root      9 Oct 11 02:03 lib32 -> usr/lib32
+0 lrwxrwxrwx    1 root      root      9 Oct 11 02:03 lib64 -> usr/lib64
+0 lrwxrwxrwx    1 root      root     10 Oct 11 02:03 libx32 -> usr/libx32
+4 drwxr-xr-x    2 root      root   4096 Oct 11 02:03 media
+4 drwxr-xr-x    2 root      root   4096 Oct 11 02:03 mnt
+4 drwxrwsr-x    1 codespace oryx   4096 Jan 20 13:05 opt
+0 dr-xr-xr-x  221 root      root      0 Jan 24 18:16 proc
+8 drwx------    1 root      root   4096 Dec 12 22:29 root
+4 drwxr-xr-x    1 root      root   4096 Jan 24 18:17 run
+0 lrwxrwxrwx    1 root      root      8 Oct 11 02:03 sbin -> usr/sbin
+4 drwxr-xr-x    2 root      root   4096 Oct 11 02:03 srv
+0 dr-xr-xr-x   12 root      root      0 Jan 24 18:13 sys
+4 drwxr-xrwt+   3 root      root   4096 Jan 24 18:17 tmp
+8 drwxr-xr-x    1 root      root   4096 Dec 12 22:13 usr
+8 drwxr-xr-x    1 root      root   4096 Jan 20 13:05 var
+4 drwxr-xr-x    5 root      root   4096 Jan 24 18:14 vscode
+4 drwxr-xrwx+   5 codespace root   4096 Jan 20 13:06 workspaces
+```
 7. Run the command **free -h** . ***(1 mark)*** __Fill answer here__.
+```bash
+@salmanfrds ➜ / $ free -h
+              total        used        free      shared  buff/cache   available
+Mem:          7.7Gi       2.1Gi       276Mi        61Mi       5.3Gi       5.2Gi
+Swap:            0B          0B          0B
+```
 8. Run the command **cat /proc/cpuinfo** . ***(1 mark)*** __Fill answer here__.
+```bash
+@salmanfrds ➜ / $ cat /proc/cpuinfo
+processor       : 0
+vendor_id       : AuthenticAMD
+cpu family      : 25
+model           : 1
+model name      : AMD EPYC 7763 64-Core Processor
+stepping        : 1
+microcode       : 0xffffffff
+cpu MHz         : 3012.612
+cache size      : 512 KB
+physical id     : 0
+siblings        : 2
+core id         : 0
+cpu cores       : 1
+apicid          : 0
+initial apicid  : 0
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 13
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext invpcid_single vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
+bugs            : sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso
+bogomips        : 4890.85
+TLB size        : 2560 4K pages
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 48 bits physical, 48 bits virtual
+power management:
+
+processor       : 1
+vendor_id       : AuthenticAMD
+cpu family      : 25
+model           : 1
+model name      : AMD EPYC 7763 64-Core Processor
+stepping        : 1
+microcode       : 0xffffffff
+cpu MHz         : 3006.725
+cache size      : 512 KB
+physical id     : 0
+siblings        : 2
+core id         : 0
+cpu cores       : 1
+apicid          : 1
+initial apicid  : 1
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 13
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext invpcid_single vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
+bugs            : sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso
+bogomips        : 4890.85
+TLB size        : 2560 4K pages
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 48 bits physical, 48 bits virtual
+power management:
+```
 9. Run the command **top** and type **q** to quit. ***(1 mark)*** __Fill answer here__.
+```bash
+top - 18:37:14 up 23 min,  0 users,  load average: 0.14, 0.78, 1.53
+Tasks:  18 total,   1 running,  17 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  4.4 us,  5.2 sy,  0.0 ni, 89.7 id,  0.2 wa,  0.0 hi,  0.5 si,  0.0 st
+MiB Mem :   7929.6 total,    286.5 free,   2176.8 used,   5466.2 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   5376.4 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                       
+    937 codespa+  20   0   42.0g 907164  50816 S   2.7  11.2   1:17.39 node                                                          
+    611 codespa+  20   0   11.3g  97024  47488 S   1.3   1.2   0:08.67 node                                                          
+    696 codespa+  20   0   11.4g 205308  43648 S   0.3   2.5   0:45.94 node                                                          
+      1 codespa+  20   0    1136    128    128 S   0.0   0.0   0:00.04 docker-init                                                   
+      7 codespa+  20   0    7236   1664   1664 S   0.0   0.0   0:00.02 sleep                                                         
+     35 root      20   0   12196   3608   2688 S   0.0   0.0   0:00.00 sshd                                                          
+    430 codespa+  20   0    2616   1408   1408 S   0.0   0.0   0:00.01 sh                                                            
+    456 root      20   0    2616   1280   1280 S   0.0   0.0   0:00.00 sh                                                            
+    602 codespa+  20   0    2624   1536   1536 S   0.0   0.0   0:00.00 sh                                                            
+   1225 codespa+  20   0   11.1g  71412  44672 S   0.0   0.9   0:03.12 node                                                          
+   1789 root      20   0 1983004  79988  53120 S   0.0   1.0   0:00.22 dockerd                                                       
+```
 10. Run the command **uname -a**. ***(1 mark)*** __Fill answer here__.
+```bash
+@salmanfrds ➜ / $ uname -a
+Linux codespaces-96d9b0 6.5.0-1025-azure #26~22.04.1-Ubuntu SMP Thu Jul 11 22:33:04 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+```
 11. What is the available free memory in the system. ***(1 mark)*** __Fill answer here__.
 12. What is the available disk space mounted on /workspace. ***(1 mark)*** __Fill answer here__.
 13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** __Fill answer here__.

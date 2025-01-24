@@ -123,6 +123,31 @@ shm                65536        0     65536   0% /dev/shm
 ```
 4. Run the command **du** . ***(1 mark)***
 ```bash
+@salmanfrds ➜ / $ sudo du -h / --max-depth=1  # Changed command to limit output length with --max-depth=1
+4.0K    /mnt
+602M    /opt
+0       /sys
+1.7G    /home
+140K    /run
+4.0K    /media
+4.0K    /srv
+29M     /var
+6.2G    /usr
+53M     /root
+4.0K    /boot
+0       /dev
+3.3M    /etc
+du: cannot access '/proc/13238/task/13238/fd/4': No such file or directory
+du: cannot access '/proc/13238/task/13238/fdinfo/4': No such file or directory
+du: cannot access '/proc/13238/fd/3': No such file or directory
+du: cannot access '/proc/13238/fdinfo/3': No such file or directory
+0       /proc
+84K     /tmp
+6.0G    /.codespaces
+5.8G    /vscode
+12G     /workspaces
+143M    /go
+32G     /  # Some directories require sudo access to avoid permission errors.
 ```
 5. Run the command **ls** . ***(1 mark)*** __Fill answer here__.
 ```bash

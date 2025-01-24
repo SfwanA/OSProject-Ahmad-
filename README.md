@@ -149,13 +149,13 @@ du: cannot access '/proc/13238/fdinfo/3': No such file or directory
 143M    /go
 32G     /  # Some directories require sudo access to avoid permission errors.
 ```
-5. Run the command **ls** . ***(1 mark)*** __Fill answer here__.
+5. Run the command **ls** . ***(1 mark)***.
 ```bash
 @salmanfrds ➜ / $ ls
 bin   dev  go    lib    lib64   media  opt   root  sbin  sys  usr  vscode
 boot  etc  home  lib32  libx32  mnt    proc  run   srv   tmp  var  workspaces
 ```
-6. Run the command **ls -asl** . ***(1 mark)*** __Fill answer here__.
+6. Run the command **ls -asl** . ***(1 mark)***.
 ```bash
 @salmanfrds ➜ / $ ls -asl
 total 92
@@ -188,14 +188,14 @@ total 92
 4 drwxr-xr-x    5 root      root   4096 Jan 24 18:14 vscode
 4 drwxr-xrwx+   5 codespace root   4096 Jan 20 13:06 workspaces
 ```
-7. Run the command **free -h** . ***(1 mark)*** __Fill answer here__.
+7. Run the command **free -h** . ***(1 mark)***.
 ```bash
 @salmanfrds ➜ / $ free -h
               total        used        free      shared  buff/cache   available
 Mem:          7.7Gi       2.1Gi       276Mi        61Mi       5.3Gi       5.2Gi
 Swap:            0B          0B          0B
 ```
-8. Run the command **cat /proc/cpuinfo** . ***(1 mark)*** __Fill answer here__.
+8. Run the command **cat /proc/cpuinfo** . ***(1 mark)***.
 ```bash
 @salmanfrds ➜ / $ cat /proc/cpuinfo
 processor       : 0
@@ -254,7 +254,7 @@ cache_alignment : 64
 address sizes   : 48 bits physical, 48 bits virtual
 power management:
 ```
-9. Run the command **top** and type **q** to quit. ***(1 mark)*** __Fill answer here__.
+9. Run the command **top** and type **q** to quit. ***(1 mark)***.
 ```bash
 top - 18:37:14 up 23 min,  0 users,  load average: 0.14, 0.78, 1.53
 Tasks:  18 total,   1 running,  17 sleeping,   0 stopped,   0 zombie
@@ -275,13 +275,14 @@ MiB Swap:      0.0 total,      0.0 free,      0.0 used.   5376.4 avail Mem
    1225 codespa+  20   0   11.1g  71412  44672 S   0.0   0.9   0:03.12 node                                                          
    1789 root      20   0 1983004  79988  53120 S   0.0   1.0   0:00.22 dockerd                                                       
 ```
-10. Run the command **uname -a**. ***(1 mark)*** __Fill answer here__.
+10. Run the command **uname -a**. ***(1 mark)***.
 ```bash
 @salmanfrds ➜ / $ uname -a
 Linux codespaces-96d9b0 6.5.0-1025-azure #26~22.04.1-Ubuntu SMP Thu Jul 11 22:33:04 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 ```
-11. What is the available free memory in the system. ***(1 mark)*** __Output of question no 7 shows that the available free memory of the system is 5.2 Gigabytes__.
-12. What is the available disk space mounted on /workspace. ***(1 mark)*** __Fill answer here__.
+11. What is the available free memory in the system. ***(1 mark)***. __Output of question no 7 shows that the available free memory of the system is 5.2 Gigabytes__.
+
+12. What is the available disk space mounted on /workspace. ***(1 mark)***.
 ```
 @salmanfrds ➜ / $ df -h /workspaces
 Filesystem      Size  Used Avail Use% Mounted on
@@ -290,15 +291,18 @@ Filesystem      Size  Used Avail Use% Mounted on
 Based on the output, it shows that the available disk space is 20GB, 35% of the disk size is used, and the remaining 65% is free space
 ```
 13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** __Based on the output of question no 10, it shows that version of the Linux kernel is 6.5.0-1025-azure, and the hardware architecture is x86_64.__
+
 14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)***.
 ```
 Based on the output of question no 5 and 6, ls means lists all the file in the current directory, while a means all files including the hidden one, s means display the size, and l means provides detailed listing, which includes file permissions, number of links, owner, group, file size, modification date, and filename.
 
 to conclude, ls lists file names, while ls -asl shows detailed info, including hidden files and sizes.
 ```
-15. What is the TLB size of the Virtual CPU. ***(1 mark)*** __Based on the output of question no 8, there are two processors, and both processors (processor 0 and processor 1) TLB size is 2560 4K pages__
-16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** __Based on the output of question no 8, CPU speed is listed as 3012.612 MHz for processor 0 and 3006.725 MHz for processor 1__
-17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** __Based on the output of question no 9, it shows that the top running process that consumes most of the cpu is process with PID 937 which consume 2.7% of the CPU__
+15. What is the TLB size of the Virtual CPU. ***(1 mark)***. __Based on the output of question no 8, there are two processors, and both processors (processor 0 and processor 1) TLB size is 2560 4K pages__
+
+16. What is the CPU speed of the Virtual CPU. ***(1 mark)***. __Based on the output of question no 8, CPU speed is listed as 3012.612 MHz for processor 0 and 3006.725 MHz for processor 1__
+
+17. What is the top running process that consumes the most CPU cycles. ***(1 mark)***. __Based on the output of question no 9, it shows that the top running process that consumes most of the cpu is process with PID 937 which consume 2.7% of the CPU__
 
 ## Running your own container instance.
 

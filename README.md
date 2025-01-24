@@ -280,13 +280,25 @@ MiB Swap:      0.0 total,      0.0 free,      0.0 used.   5376.4 avail Mem
 @salmanfrds ➜ / $ uname -a
 Linux codespaces-96d9b0 6.5.0-1025-azure #26~22.04.1-Ubuntu SMP Thu Jul 11 22:33:04 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 ```
-11. What is the available free memory in the system. ***(1 mark)*** __Fill answer here__.
+11. What is the available free memory in the system. ***(1 mark)*** __Output of question no 7 shows that the available free memory of the system is 5.2 Gigabytes__.
 12. What is the available disk space mounted on /workspace. ***(1 mark)*** __Fill answer here__.
-13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** __Fill answer here__.
-14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)*** __Fill answer here__.
-15. What is the TLB size of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** __Fill answer here__.
+```
+@salmanfrds ➜ / $ df -h /workspaces
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/loop4       32G   11G   20G  35% /workspaces
+
+Based on the output, it shows that the available disk space is 20GB, 35% of the disk size is used, and the remaining 65% is free space
+```
+13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** __Based on the output of question no 10, it shows that version of the Linux kernel is 6.5.0-1025-azure, and the hardware architecture is x86_64.__
+14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)***.
+```
+Based on the output of question no 5 and 6, ls means lists all the file in the current directory, while a means all files including the hidden one, s means display the size, and l means provides detailed listing, which includes file permissions, number of links, owner, group, file size, modification date, and filename.
+
+to conclude, ls lists file names, while ls -asl shows detailed info, including hidden files and sizes.
+```
+15. What is the TLB size of the Virtual CPU. ***(1 mark)*** __Based on the output of question no 8, there are two processors, and both processors (processor 0 and processor 1) TLB size is 2560 4K pages__
+16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** __Based on the output of question no 8, CPU speed is listed as 3012.612 MHz for processor 0 and 3006.725 MHz for processor 1__
+17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** __Based on the output of question no 9, it shows that the top running process that consumes most of the cpu is process with PID 937 which consume 2.7% of the CPU__
 
 ## Running your own container instance.
 

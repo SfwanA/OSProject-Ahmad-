@@ -449,7 +449,7 @@ docker run --detach -v /workspaces/OSProject/webpage:/usr/local/apache2/htdocs/ 
 
 ***Questions:***
 
-1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** __Fill answer here__.
+1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** __Permissions: drwxr-xr-x , User and Group: 1000:1000__.
 ```bash
 @SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker exec beautiful_stonebraker ls -ld /usr/local/apache2/htdocs
 drwxrwxrwx+ 2 1000 1000 4096 Jan 25 16:15 /usr/local/apache2/htdocs
@@ -479,11 +479,36 @@ docker run -itd --net rednet --name c2 busybox sh
 ```
 ***Questions:***
 
-1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** __Fill answer here__.
-2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)*** __Fill answer here__.
-3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)*** __Fill answer here__.
-4. What is the network address for the running container c1 and c2? ***(1 mark)*** __Fill answer here__.
-5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
+1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** __BusyBox is commonly used as a base image for containers that require basic shell/command-line functionality without the overhead of a full OS.
+--name assigns a custom name to a container__.
+
+2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)*** __Output below__.
+```bash
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+7d58b76c0756   bluenet   bridge    local
+5328f37aae3c   bridge    bridge    local
+083048829d19   host      host      local
+9e5f9cabdb39   none      null      local
+415a62dff7b9   rednet    bridge    local
+```
+
+3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)***
+__Bluenet: 172.18.0.1, Rednet: 172.19.0.1__.
+
+4. What is the network address for the running container c1 and c2? ***(1 mark)***
+__Container c1 (bluenet):
+IP Address: 172.18.0.2
+Subnet: 172.18.0.0/16
+Container c2 (rednet):
+IP Address: 172.19.0.2
+Subnet: 172.19.0.0/16__.
+   
+5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)***
+```bash
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker exec c1 ping c2
+ping: bad address 'c2'
+```
 
 ## Bridging two SUB Networks
 1. Let's try this again by creating a network to bridge the two containers in the two subnetworks
@@ -495,8 +520,25 @@ docker exec c1 ping c2
 ```
 ***Questions:***
 
-1. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
-2. What is different from the previous ping in the section above? ***(1 mark)*** __Fill answer here__.
+1. Are you able to ping? Show your output . ***(1 mark)***
+__Yes, see below__.
+```bash
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker exec c1 ping c2
+PING c2 (172.20.0.3): 56 data bytes
+64 bytes from 172.20.0.3: seq=0 ttl=64 time=0.127 ms
+64 bytes from 172.20.0.3: seq=1 ttl=64 time=0.080 ms
+64 bytes from 172.20.0.3: seq=2 ttl=64 time=0.089 ms
+64 bytes from 172.20.0.3: seq=3 ttl=64 time=0.075 ms
+64 bytes from 172.20.0.3: seq=4 ttl=64 time=0.089 ms
+64 bytes from 172.20.0.3: seq=5 ttl=64 time=0.065 ms
+64 bytes from 172.20.0.3: seq=6 ttl=64 time=0.098 ms
+64 bytes from 172.20.0.3: seq=7 ttl=64 time=0.075 ms
+64 bytes from 172.20.0.3: seq=8 ttl=64 time=0.079 ms
+64 bytes from 172.20.0.3: seq=9 ttl=64 time=0.077 ms
+```
+2. What is different from the previous ping in the section above? ***(1 mark)***
+__Previous Ping: Failed with ping: bad address 'c2' because c1 and c2 were on isolated networks (bluenet and rednet).
+Current Ping: Succeeds because both containers are now connected to the same network (bridgenet), enabling DNS resolution and direct communication.__.
 
 ## Intermediate Level (10 marks bonus)
 

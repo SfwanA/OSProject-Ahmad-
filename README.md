@@ -362,8 +362,27 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 
 ***Questions:***
 
-1. Are files in the container persistent. Why not?. ***(1 mark)*** __Fill answer here__.
-2. Can we run two, or three instances of debian linux? . ***(1 mark)*** __Fill answer here__.
+1. Are files in the container persistent. Why not?. ***(1 mark)*** __Files in Docker containers are not persistent by default. This is because containers use a layered filesystem where changes (e.g., new files) are stored in a temporary writable layer. When a container is stopped, the filesystem persists and can be restarted. However, if the container is removed, this temporary layer is destroyed, and all files are lost.__.
+   
+2. Can we run two, or three instances of debian linux? . ***(1 mark)*** __Let's test it!__.
+```bash
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker run --detach -it --name container1 debian
+d383117442bdb08e052fd0e742ae3bbfe3e475da79e72409cd17d81c84dfc631
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker run --detach -it --name container2 debia
+n
+dd60617d789dbef4e7b5e5b91ecd85f3dd574e5fbb8910096d3e42af02eef7fc
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker run --detach -it --name container3 debia
+n
+989065aa878315d98e0595d141030de289f3676011dc9950edbaa774d3e882fb
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES
+989065aa8783   debian    "bash"    12 seconds ago   Up 11 seconds             container3
+dd60617d789d   debian    "bash"    16 seconds ago   Up 15 seconds             container2
+d383117442bd   debian    "bash"    22 seconds ago   Up 21 seconds             container1
+```
+__Based on the above, it can run multiple instances of debian linux!__
 
 ## Running your own container with persistent storage
 
@@ -382,14 +401,29 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 
 ***Questions:***
 
-1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __Fill answer here__.
-2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
+1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __The file helloworld.txt is owned by root:root inside the container__.
+   
 ```bash
-//use sudo and chown
-sudo chown -R codespace:codespace myroot
-
+@SfwanA ➜ /workspaces/OSProject-Ahmad-/myroot (main) $ docker exec -i -t modest_leakey /bin/bash
+root@c03035df724f:/# ls -l /root
+total 4
+-rw-rw-rw- 1 root root 13 Jan 25 15:40 helloworld.txt
 ```
-*** __Fill answer here__.***
+
+2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
+
+
+```bash
+@SfwanA ➜ /workspaces/OSProject-Ahmad-/myroot (main) $ cd ..
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ ls -l /workspaces/OSProject-Ahmad-/myroot
+total 4
+-rw-rw-rw- 1 root root 14 Jan 25 16:04 helloworld.txt
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ sudo chown -R codespace:codespace myroot
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ ls -l /workspaces/OSProject-Ahmad-/myroot
+total 4
+-rw-rw-rw- 1 codespace codespace 14 Jan 25 16:04 helloworld.txt
+```
+*** __Based on the above, permission can be changed__.***
 
 ## You are on your own, create your own static webpage
 
@@ -416,8 +450,17 @@ docker run --detach -v /workspaces/OSProject/webpage:/usr/local/apache2/htdocs/ 
 ***Questions:***
 
 1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** __Fill answer here__.
-2. What port is the apache web server running. ***(1 mark)*** __Fill answer here__.
-3. What port is open for http protocol on the host machine? ***(1 mark)*** __Fill answer here__.
+```bash
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker exec beautiful_stonebraker ls -ld /usr/local/apache2/htdocs
+drwxrwxrwx+ 2 1000 1000 4096 Jan 25 16:15 /usr/local/apache2/htdocs
+```
+2. What port is the apache web server running. ***(1 mark)*** __The Apache web server inside the Docker container is running on port 80__.
+```bash
+@SfwanA ➜ /workspaces/OSProject-Ahmad- (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND              CREATED          STATUS          PORTS                                     NAMES
+fd888d7557bd   httpd     "httpd-foreground"   9 minutes ago    Up 9 minutes    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   beautiful_stonebraker
+```
+3. What port is open for http protocol on the host machine? ***(1 mark)*** __Based on the bash above, the port open for HTTP protocol on the host machine is 8080__.
 
 ## Create SUB Networks
 
